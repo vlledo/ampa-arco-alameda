@@ -12,8 +12,9 @@ Iniciativa del AMPA para fomentar la lectura y la reutilización: los libros que
 
 ## Cómo funcionó
 
-- Cada peque podía traer libros en buen estado.
-- A cambio, podía llevarse otro libro del mercadillo.
+- Cada peque traía **uno o varios libros** en buen estado para dejar en el mercadillo.
+- Con **1 €**, podía llevarse otro libro del mercadillo.
+- El dinero recaudado se destinó al AMPA para **sufragar las actividades** que organizamos durante el curso.
 - La actividad se centró en el alumnado de **4º, 5º y 6º de primaria**.
 
 ## La actividad

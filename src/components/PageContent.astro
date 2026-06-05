@@ -40,5 +40,5 @@ const { title, description, pageTitle } = Astro.props;
   .content :global(h3) { margin-top: var(--space-5); margin-bottom: var(--space-2); }
   .content :global(ul), .content :global(ol) { padding-left: var(--space-5); margin-bottom: var(--space-4); }
   .content :global(li) { margin-bottom: var(--space-2); }
-  .content :global(a) { color: var(--ampa-blue); }
+  .content :global(a:not(.btn)) { color: var(--ampa-blue); }
 </style>
