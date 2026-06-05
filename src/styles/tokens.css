@@ -1,0 +1,59 @@
+:root {
+  /* Paleta extraída de los logos */
+  --ampa-green: #60c030;
+  --ampa-dark: #205040;
+  --ampa-deep: #1a4030;
+  --ampa-blue: #005090;
+  --ampa-red: #f03030;
+  --green-soft: #e8f5e2;
+
+  /* Neutrales */
+  --ink: #111418;
+  --ink-soft: #4a5568;
+  --bg: #fafbfc;
+  --line: #e7ebef;
+  --white: #ffffff;
+
+  /* Tipografía */
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+               Oxygen, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+
+  --fs-h1: 2rem;
+  --fs-h2: 1.35rem;
+  --fs-h3: 1.05rem;
+  --fs-body: 1rem;
+  --fs-small: 0.85rem;
+  --fs-micro: 0.7rem;
+
+  --lh-tight: 1.15;
+  --lh-snug: 1.3;
+  --lh-normal: 1.5;
+
+  /* Espaciado (escala base 4px) */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 2.5rem;
+  --space-8: 3rem;
+  --space-section: 3.125rem;
+  --space-section-mobile: 2.25rem;
+
+  /* Layout */
+  --container-max: 1120px;
+  --container-pad: 28px;
+  --container-pad-mobile: 16px;
+  --breakpoint-md: 760px;
+
+  /* Bordes y radios */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-pill: 999px;
+
+  /* Sombras (uso muy puntual) */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
