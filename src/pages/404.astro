@@ -1,0 +1,38 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import TopBar from '../components/TopBar.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Button from '../components/Button.astro';
+---
+<BaseLayout
+  title="Página no encontrada · AMPA Arco de la Alameda"
+  description="La página que buscas no existe."
+  noIndex
+>
+  <Fragment slot="header">
+    <TopBar />
+    <Header />
+  </Fragment>
+
+  <div class="container error">
+    <p class="code">404</p>
+    <h1>No encontramos esta página</h1>
+    <p>Quizá el enlace ha cambiado o la página ya no existe. Puedes volver a la portada o consultar los servicios y eventos disponibles.</p>
+    <div class="actions">
+      <Button href="/">Volver a inicio</Button>
+      <Button href="/servicios/" variant="ghost">Ver servicios</Button>
+    </div>
+  </div>
+
+  <Fragment slot="footer">
+    <Footer />
+  </Fragment>
+</BaseLayout>
+
+<style>
+  .error { padding: var(--space-7) var(--container-pad); text-align: center; max-width: 60ch; margin: 0 auto; }
+  .code { font-size: 4rem; font-weight: 800; color: var(--ampa-dark); line-height: 1; margin-bottom: var(--space-3); }
+  h1 { margin-bottom: var(--space-4); }
+  .actions { display: flex; justify-content: center; gap: var(--space-3); margin-top: var(--space-5); flex-wrap: wrap; }
+</style>

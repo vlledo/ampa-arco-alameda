@@ -1,0 +1,44 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import TopBar from './TopBar.astro';
+import Header from './Header.astro';
+import Footer from './Footer.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  pageTitle: string;
+}
+
+const { title, description, pageTitle } = Astro.props;
+---
+<BaseLayout title={title} description={description}>
+  <Fragment slot="header">
+    <TopBar />
+    <Header />
+  </Fragment>
+
+  <article class="static-page">
+    <div class="container">
+      <h1>{pageTitle}</h1>
+      <div class="content">
+        <slot />
+      </div>
+    </div>
+  </article>
+
+  <Fragment slot="footer">
+    <Footer />
+  </Fragment>
+</BaseLayout>
+
+<style>
+  .static-page { padding: var(--space-7) 0; background: var(--white); }
+  .content { max-width: 65ch; margin-top: var(--space-5); }
+  .content :global(p) { margin-bottom: var(--space-4); line-height: var(--lh-normal); }
+  .content :global(h2) { margin-top: var(--space-6); margin-bottom: var(--space-3); }
+  .content :global(h3) { margin-top: var(--space-5); margin-bottom: var(--space-2); }
+  .content :global(ul), .content :global(ol) { padding-left: var(--space-5); margin-bottom: var(--space-4); }
+  .content :global(li) { margin-bottom: var(--space-2); }
+  .content :global(a) { color: var(--ampa-blue); }
+</style>
