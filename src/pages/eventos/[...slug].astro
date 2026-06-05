@@ -1,0 +1,102 @@
+---
+import { getCollection, render, type CollectionEntry } from 'astro:content';
+import { Image } from 'astro:assets';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import TopBar from '../../components/TopBar.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import Button from '../../components/Button.astro';
+import IconCalendar from '../../components/icons/IconCalendar.astro';
+import IconLocation from '../../components/icons/IconLocation.astro';
+
+export async function getStaticPaths() {
+  const events = await getCollection('events');
+  return events.map(event => ({
+    params: { slug: event.id },
+    props: { event },
+  }));
+}
+
+interface Props { event: CollectionEntry<'events'>; }
+const { event } = Astro.props;
+const { Content } = await render(event);
+const { title, date, location, poster, posterAlt, shortDescription } = event.data;
+const fullDate = new Intl.DateTimeFormat('es-ES', {
+  weekday: 'long',
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+  hour: '2-digit',
+  minute: '2-digit',
+}).format(date);
+const isPast = date < new Date();
+---
+<BaseLayout
+  title={`${title} · AMPA Arco de la Alameda`}
+  description={shortDescription}
+  ogImage={poster.src}
+>
+  <Fragment slot="header">
+    <TopBar />
+    <Header />
+  </Fragment>
+
+  <article class="event">
+    <div class="container event-grid">
+      <div class="event-text">
+        <a href="/eventos/" class="back">← Todos los eventos</a>
+        {isPast && <p class="badge">Evento anterior</p>}
+        <h1>{title}</h1>
+        <div class="meta">
+          <span class="meta-item"><IconCalendar /><time datetime={date.toISOString()}>{fullDate}</time></span>
+          <span class="meta-item"><IconLocation />{location}</span>
+        </div>
+        <div class="content">
+          <Content />
+        </div>
+        <div class="actions">
+          <Button href="/eventos/" variant="ghost">Ver otros eventos</Button>
+        </div>
+      </div>
+      <div class="event-poster">
+        <Image src={poster} alt={posterAlt} width={640} height={853} />
+      </div>
+    </div>
+  </article>
+
+  <script type="application/ld+json" set:html={JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'Event',
+    name: title,
+    startDate: date.toISOString(),
+    location: { '@type': 'Place', name: location, address: { '@type': 'PostalAddress', addressLocality: 'Jaén', addressCountry: 'ES' } },
+    description: shortDescription,
+    organizer: { '@type': 'Organization', name: 'AMPA Arco de la Alameda' },
+    eventStatus: 'https://schema.org/EventScheduled',
+  })} />
+
+  <Fragment slot="footer">
+    <Footer />
+  </Fragment>
+</BaseLayout>
+
+<style>
+  .event { padding: var(--space-7) 0; background: var(--white); }
+  .event-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: var(--space-7); align-items: start; }
+  .back { color: var(--ampa-blue); font-size: var(--fs-small); }
+  .badge { display: inline-block; background: var(--green-soft); color: var(--ampa-dark); padding: 4px 10px; border-radius: var(--radius-pill); font-size: var(--fs-micro); font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-top: var(--space-3); }
+  h1 { margin-top: var(--space-4); }
+  .meta { display: flex; flex-wrap: wrap; gap: var(--space-5); margin-top: var(--space-4); color: var(--ink-soft); }
+  .meta-item { display: inline-flex; align-items: center; gap: var(--space-2); font-size: var(--fs-small); }
+  .content { margin-top: var(--space-5); }
+  .content :global(p) { margin-bottom: var(--space-4); line-height: var(--lh-normal); }
+  .content :global(h2) { margin-top: var(--space-6); }
+  .content :global(ul), .content :global(ol) { padding-left: var(--space-5); margin-bottom: var(--space-4); }
+  .actions { margin-top: var(--space-6); }
+  .event-poster { border-radius: var(--radius-md); overflow: hidden; border: 1px solid var(--line); }
+  .event-poster :global(img) { width: 100%; height: auto; display: block; }
+
+  @media (max-width: 760px) {
+    .event-grid { grid-template-columns: 1fr; }
+  }
+</style>

@@ -1,0 +1,67 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import TopBar from '../../components/TopBar.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import EventCard from '../../components/EventCard.astro';
+
+const now = new Date();
+const allEvents = await getCollection('events');
+
+const upcoming = allEvents
+  .filter(e => e.data.date >= now)
+  .sort((a, b) => a.data.date.getTime() - b.data.date.getTime());
+
+const past = allEvents
+  .filter(e => e.data.date < now)
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+---
+<BaseLayout
+  title="Eventos · AMPA Arco de la Alameda"
+  description="Próximos eventos y actividades del AMPA Arco de la Alameda."
+>
+  <Fragment slot="header">
+    <TopBar />
+    <Header />
+  </Fragment>
+
+  <div class="container page">
+    <h1>Eventos</h1>
+
+    <section aria-labelledby="upcoming-title">
+      <h2 id="upcoming-title">Próximos eventos</h2>
+      {upcoming.length === 0 ? (
+        <p class="muted">No hay eventos próximos publicados.</p>
+      ) : (
+        <div class="grid">
+          {upcoming.map(event => <EventCard event={event} />)}
+        </div>
+      )}
+    </section>
+
+    {past.length > 0 && (
+      <section aria-labelledby="past-title">
+        <h2 id="past-title">Eventos anteriores</h2>
+        <div class="grid">
+          {past.map(event => <EventCard event={event} />)}
+        </div>
+      </section>
+    )}
+  </div>
+
+  <Fragment slot="footer">
+    <Footer />
+  </Fragment>
+</BaseLayout>
+
+<style>
+  .page { padding: var(--space-7) var(--container-pad); }
+  h1 { margin-bottom: var(--space-6); }
+  h2 { margin-top: var(--space-7); margin-bottom: var(--space-5); }
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-5); margin-top: var(--space-4); }
+  .muted { color: var(--ink-soft); }
+  @media (max-width: 760px) {
+    .grid { grid-template-columns: 1fr; }
+  }
+</style>
