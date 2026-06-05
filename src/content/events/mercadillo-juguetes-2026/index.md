@@ -12,8 +12,9 @@ Iniciativa de economía circular del AMPA: los juguetes que ya no usas en casa p
 
 ## Cómo participa el alumnado
 
-- Cada peque puede traer juguetes en buen estado.
-- Por cada juguete entregado, recibe un "punto" que cambia por otro juguete del mercadillo.
+- Cada peque puede traer **uno o varios juguetes** en buen estado.
+- A cambio, lleva **2 € (mínimo)** para hacerse con otro juguete del mercadillo.
+- **El dinero recaudado va íntegramente al AMPA** y se destina a financiar las actividades para los peques durante el curso.
 
 ## Detalles
 

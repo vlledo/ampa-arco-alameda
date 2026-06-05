@@ -13,10 +13,11 @@ Cerramos el curso 25-26 con la fiesta más esperada del año.
 
 ## Programa
 
-- **Barra con bebidas y bocadillos** — solo se admiten pagos en **efectivo**.
-- **Animación a cargo de Geminela** — DJ y actividades para los peques.
+- **Barra con bebidas y bocadillos a precios populares** — solo se admiten pagos en **efectivo**.
+- **Animación con música y DJ** para todas las edades.
 - **Juegos y actividades para niños** organizados por el AMPA.
 - **Actuaciones de fin de curso** del alumnado del cole.
+- **Sorteos exclusivos para socios del AMPA**.
 
 ## Detalles
 
