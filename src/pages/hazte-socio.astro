@@ -1,10 +1,45 @@
 ---
 import PageContent from '../components/PageContent.astro';
+import Button from '../components/Button.astro';
+import IconExternal from '../components/icons/IconExternal.astro';
+
+const formUrl = 'https://forms.google.com/CAMBIAR-CUANDO-ESTE-DISPONIBLE';
 ---
 <PageContent
   title="Hazte socio · AMPA Arco de la Alameda"
-  description="Únete al AMPA Arco de la Alameda del CEIP Jesús María de Jaén."
+  description="Únete al AMPA Arco de la Alameda del CEIP Jesús María de Jaén y forma parte de la comunidad."
   pageTitle="Hazte socio"
 >
-  <p>Contenido en construcción.</p>
+  <p class="intro">El AMPA Arco de la Alameda existe gracias a las familias que se asocian cada curso. Cuanta más gente forme parte, más cosas podemos hacer por los peques y por el cole.</p>
+
+  <h2>¿Qué hacemos con tu cuota?</h2>
+  <ul>
+    <li>Organizamos la <strong>fiesta de fin de curso</strong> y otras actividades comunitarias.</li>
+    <li>Apoyamos los proyectos del cole como <strong>ecoescuela</strong>.</li>
+    <li>Subvencionamos parte de actividades extraescolares y materiales.</li>
+    <li>Coordinamos servicios como la <strong>ludoteca</strong> y la <strong>escuela de verano</strong>.</li>
+    <li>Representamos al AMPA en la <strong>FAMPA Los Olivos</strong> y en el Consejo Escolar.</li>
+  </ul>
+
+  <h2>Cómo asociarse</h2>
+  <p>Rellena el formulario online y sigue las instrucciones de pago de la cuota anual.</p>
+
+  <p>
+    <Button href={formUrl} external>
+      Quiero asociarme <IconExternal />
+    </Button>
+  </p>
+
+  <h2>Más información</h2>
+  <p>Para cualquier duda sobre la asociación escríbenos a <a href="mailto:ampacolegiojesusmaria@gmail.com">ampacolegiojesusmaria@gmail.com</a>.</p>
+
+  <figure class="poster">
+    <img src="/hazte-socio/cartel.jpeg" alt="Cartel del AMPA Arco de la Alameda invitando a hacerse socio." width="600" height="800" />
+  </figure>
 </PageContent>
+
+<style>
+  .intro { font-size: 1.1rem; color: var(--ink); }
+  .poster { margin-top: var(--space-7); border: 1px solid var(--line); border-radius: var(--radius-md); overflow: hidden; max-width: 480px; }
+  .poster img { width: 100%; height: auto; display: block; }
+</style>
