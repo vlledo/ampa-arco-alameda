@@ -19,6 +19,7 @@ ul, ol {
 img, picture, video, canvas, svg {
   display: block;
   max-width: 100%;
+  height: auto;
 }
 
 button {
