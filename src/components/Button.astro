@@ -1,0 +1,54 @@
+---
+interface Props {
+  href: string;
+  variant?: 'primary' | 'ghost' | 'inverse' | 'accent';
+  external?: boolean;
+  download?: boolean;
+  ariaLabel?: string;
+}
+
+const {
+  href,
+  variant = 'primary',
+  external = false,
+  download = false,
+  ariaLabel,
+} = Astro.props;
+
+const rel = external ? 'noopener' : undefined;
+const target = external ? '_blank' : undefined;
+const downloadAttr = download ? '' : undefined;
+---
+<a
+  href={href}
+  class:list={['btn', `btn-${variant}`]}
+  rel={rel}
+  target={target}
+  download={downloadAttr}
+  aria-label={ariaLabel}
+>
+  <slot />
+</a>
+
+<style>
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: 10px 18px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    border: 1px solid transparent;
+    transition: background-color 0.15s ease;
+  }
+  .btn-primary { background: var(--ampa-dark); color: var(--white); }
+  .btn-primary:hover { background: var(--ampa-deep); }
+  .btn-ghost { background: transparent; color: var(--ampa-dark); border-color: var(--ampa-dark); }
+  .btn-ghost:hover { background: var(--green-soft); }
+  .btn-inverse { background: var(--white); color: var(--ampa-deep); }
+  .btn-inverse:hover { background: var(--green-soft); }
+  .btn-accent { background: var(--ampa-green); color: var(--ampa-deep); }
+  .btn-accent:hover { filter: brightness(0.95); }
+</style>
