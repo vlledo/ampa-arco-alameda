@@ -1,0 +1,44 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import ServiceCard from './ServiceCard.astro';
+
+interface Props {
+  services: CollectionEntry<'services'>[];
+}
+
+const { services } = Astro.props;
+---
+<section class="service-grid-section">
+  <div class="container">
+    <h2>Servicios del AMPA</h2>
+    {services.length > 0 ? (
+      <div class="service-grid">
+        {services.map(service => (
+          <ServiceCard service={service} />
+        ))}
+      </div>
+    ) : (
+      <p class="empty-state">No hay servicios disponibles en este momento.</p>
+    )}
+  </div>
+</section>
+
+<style>
+  .service-grid-section {
+    padding: var(--space-8) 28px;
+    background: var(--white);
+  }
+  h2 {
+    margin-bottom: var(--space-6);
+  }
+  .service-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: var(--space-6);
+  }
+  .empty-state {
+    color: var(--ink-soft);
+    text-align: center;
+    padding: var(--space-6);
+  }
+</style>

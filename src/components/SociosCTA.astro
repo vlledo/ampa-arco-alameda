@@ -1,0 +1,41 @@
+---
+import Button from './Button.astro';
+---
+<section class="socios-cta">
+  <div class="container">
+    <div class="cta-content">
+      <h2>Hazte socio del AMPA</h2>
+      <p>Únete a nuestra comunidad y participa activamente en la vida del colegio. Los socios tienen acceso a todos nuestros servicios y actividades.</p>
+      <Button href="/socios/" variant="primary">Más información</Button>
+    </div>
+  </div>
+</section>
+
+<style>
+  .socios-cta {
+    background: linear-gradient(135deg, var(--ampa-green) 0%, var(--ampa-dark) 100%);
+    color: var(--white);
+    padding: var(--space-8) 28px;
+  }
+  .cta-content {
+    max-width: 600px;
+  }
+  h2 {
+    color: var(--white);
+    margin-bottom: var(--space-3);
+  }
+  p {
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: var(--space-4);
+    line-height: 1.6;
+  }
+  :global(.button) {
+    --button-bg: var(--white);
+    --button-text: var(--ampa-dark);
+  }
+  @media (max-width: 768px) {
+    .socios-cta {
+      padding: var(--space-6) 28px;
+    }
+  }
+</style>

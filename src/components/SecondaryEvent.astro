@@ -1,0 +1,34 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import EventCard from './EventCard.astro';
+
+interface Props {
+  event: CollectionEntry<'events'>;
+}
+
+const { event } = Astro.props;
+---
+<section class="secondary-event">
+  <div class="container">
+    <h2>Próximo evento</h2>
+    <div class="event-wrapper">
+      <EventCard event={event} />
+    </div>
+  </div>
+</section>
+
+<style>
+  .secondary-event {
+    padding: var(--space-8) 28px;
+    background: var(--bg-secondary);
+  }
+  .secondary-event .container {
+    max-width: 100%;
+  }
+  h2 {
+    margin-bottom: var(--space-6);
+  }
+  .event-wrapper {
+    max-width: 400px;
+  }
+</style>
