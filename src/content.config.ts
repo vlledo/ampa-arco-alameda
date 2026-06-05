@@ -11,6 +11,7 @@ const events = defineCollection({
       poster: image(),
       posterAlt: z.string().min(1, 'El alt del cartel es obligatorio'),
       featured: z.boolean().default(false),
+      isHero: z.boolean().default(false),
       shortDescription: z.string(),
     }),
 });

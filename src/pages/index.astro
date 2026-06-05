@@ -5,17 +5,20 @@ import TopBar from '../components/TopBar.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import HeroEvent from '../components/HeroEvent.astro';
-import SecondaryEvent from '../components/SecondaryEvent.astro';
+import UpcomingEvents from '../components/UpcomingEvents.astro';
 import ServiceGrid from '../components/ServiceGrid.astro';
 import SociosCTA from '../components/SociosCTA.astro';
 import NewsTeaser from '../components/NewsTeaser.astro';
 
 const now = new Date();
 
-const allEvents = await getCollection('events', ({ data }) => data.featured && data.date >= now);
-const featured = allEvents.sort((a, b) => a.data.date.getTime() - b.data.date.getTime());
-const heroEvent = featured[0];
-const secondaryEvent = featured[1];
+const allUpcomingFeatured = (await getCollection('events', ({ data }) => data.featured && data.date >= now))
+  .sort((a, b) => a.data.date.getTime() - b.data.date.getTime());
+
+// Hero: first event with isHero=true (if any), else first by date
+const heroCandidates = allUpcomingFeatured.filter(e => e.data.isHero);
+const heroEvent = heroCandidates[0] ?? allUpcomingFeatured[0];
+const upcomingOthers = allUpcomingFeatured.filter(e => e.id !== heroEvent?.id);
 
 const allServices = await getCollection('services');
 const services = allServices.sort((a, b) => a.data.order - b.data.order);
@@ -37,7 +40,7 @@ const services = allServices.sort((a, b) => a.data.order - b.data.order);
     </section>
   )}
 
-  {secondaryEvent && <SecondaryEvent event={secondaryEvent} />}
+  <UpcomingEvents events={upcomingOthers} />
 
   <ServiceGrid services={services} />
 
