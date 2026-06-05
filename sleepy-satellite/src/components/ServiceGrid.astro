@@ -1,0 +1,37 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import ServiceCard from './ServiceCard.astro';
+
+interface Props {
+  services: CollectionEntry<'services'>[];
+  showHeader?: boolean;
+}
+
+const { services, showHeader = true } = Astro.props;
+---
+<section class="services" aria-labelledby={showHeader ? 'services-title' : undefined}>
+  <div class="container">
+    {showHeader && (
+      <div class="section-header">
+        <h2 id="services-title">Servicios del AMPA</h2>
+        <a href="/servicios/">Ver todos →</a>
+      </div>
+    )}
+    <div class="grid">
+      {services.map(service => <ServiceCard service={service} />)}
+    </div>
+  </div>
+</section>
+
+<style>
+  .services { padding: var(--space-section) 0; background: var(--white); border-top: 1px solid var(--line); }
+  .section-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: var(--space-5); }
+  .section-header a { color: var(--ampa-blue); font-size: var(--fs-small); font-weight: 600; text-decoration: none; }
+  .section-header a:hover { text-decoration: underline; }
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-5); }
+
+  @media (max-width: 760px) {
+    .services { padding: var(--space-section-mobile) 0; }
+    .grid { grid-template-columns: 1fr; }
+  }
+</style>

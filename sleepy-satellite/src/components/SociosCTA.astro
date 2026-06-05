@@ -1,0 +1,44 @@
+---
+import Button from './Button.astro';
+---
+<section class="socios" aria-labelledby="socios-title">
+  <div class="container">
+    <div class="inner">
+      <div>
+        <h2 id="socios-title">Hazte socio del AMPA</h2>
+        <p>Cuanto más somos, más cosas podemos hacer por nuestros peques y por el cole. Hazte socio y forma parte de la comunidad Arco de la Alameda.</p>
+      </div>
+      <div>
+        <Button href="/hazte-socio/" variant="accent">Quiero asociarme</Button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .socios { background: var(--ampa-dark); color: var(--white); padding: var(--space-section) 0; position: relative; overflow: hidden; }
+  .socios::after {
+    content: '';
+    position: absolute;
+    right: -40px; bottom: -40px;
+    width: 160px; height: 160px;
+    background: var(--ampa-green);
+    opacity: 0.18;
+    border-radius: 50%;
+  }
+  .inner {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: var(--space-5);
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+  h2 { color: var(--white); margin-bottom: var(--space-2); }
+  p { margin: 0; opacity: 0.92; max-width: 50ch; }
+
+  @media (max-width: 760px) {
+    .socios { padding: var(--space-section-mobile) 0; }
+    .inner { grid-template-columns: 1fr; }
+  }
+</style>
