@@ -1,0 +1,69 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { Image } from 'astro:assets';
+
+interface Props {
+  event: CollectionEntry<'events'>;
+}
+
+const { event } = Astro.props;
+const { title, date, location, poster, posterAlt, shortDescription } = event.data;
+const url = `/eventos/${event.id}/`;
+
+const day = date.getDate();
+const month = new Intl.DateTimeFormat('es-ES', { month: 'short' }).format(date).replace('.', '');
+const fullDate = new Intl.DateTimeFormat('es-ES', {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+  hour: '2-digit',
+  minute: '2-digit',
+}).format(date);
+---
+<article class="event-card">
+  <a href={url} class="event-link" aria-label={`Ver detalles de ${title}`}>
+    <div class="poster">
+      <Image src={poster} alt={posterAlt} width={400} height={533} />
+    </div>
+    <div class="body">
+      <div class="date-chip" aria-hidden="true">
+        <span class="d">{day}</span>
+        <span class="m">{month}</span>
+      </div>
+      <h3>{title}</h3>
+      <p class="meta"><time datetime={date.toISOString()}>{fullDate}</time> · {location}</p>
+      <p class="lead">{shortDescription}</p>
+    </div>
+  </a>
+</article>
+
+<style>
+  .event-card {
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    background: var(--white);
+    transition: border-color 0.15s ease;
+  }
+  .event-card:hover { border-color: var(--ampa-dark); }
+  .event-link { display: block; color: inherit; text-decoration: none; }
+  .poster { aspect-ratio: 3/4; background: var(--green-soft); overflow: hidden; }
+  .poster :global(img) { width: 100%; height: 100%; object-fit: cover; }
+  .body { padding: var(--space-4); position: relative; }
+  .date-chip {
+    position: absolute;
+    top: -28px;
+    left: var(--space-4);
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    padding: var(--space-2) var(--space-3);
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+  }
+  .date-chip .d { display: block; font-size: 1.4rem; font-weight: 800; color: var(--ampa-dark); line-height: 1; }
+  .date-chip .m { display: block; font-size: var(--fs-micro); text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-soft); margin-top: 2px; }
+  h3 { margin-top: var(--space-4); }
+  .meta { color: var(--ink-soft); font-size: var(--fs-small); margin-top: var(--space-2); }
+  .lead { margin-top: var(--space-3); color: var(--ink-soft); }
+</style>

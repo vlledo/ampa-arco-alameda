@@ -1,0 +1,69 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { Image } from 'astro:assets';
+
+interface Props {
+  service: CollectionEntry<'services'>;
+}
+
+const { service } = Astro.props;
+const { title, season, shortDescription, heroImage, heroImageAlt } = service.data;
+const url = `/servicios/${service.id}/`;
+---
+<article class="service-card">
+  <a href={url} class="service-link">
+    <div class="img">
+      {heroImage && heroImageAlt
+        ? <Image src={heroImage} alt={heroImageAlt} width={520} height={293} />
+        : <div class="placeholder" aria-hidden="true">{title}</div>
+      }
+    </div>
+    <div class="body">
+      <span class="label">{season}</span>
+      <h3>{title}</h3>
+      <p>{shortDescription}</p>
+      <span class="cta">Más información</span>
+    </div>
+  </a>
+</article>
+
+<style>
+  .service-card {
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    background: var(--white);
+    transition: border-color 0.15s ease;
+  }
+  .service-card:hover { border-color: var(--ampa-dark); }
+  .service-link { display: block; color: inherit; text-decoration: none; }
+  .img {
+    aspect-ratio: 16/9;
+    background: var(--green-soft);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .img :global(img) { width: 100%; height: 100%; object-fit: cover; }
+  .placeholder { color: var(--ampa-dark); font-weight: 600; font-size: var(--fs-small); }
+  .body { padding: var(--space-4); }
+  .label {
+    font-size: var(--fs-micro);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ampa-dark);
+    font-weight: 800;
+  }
+  h3 { margin-top: var(--space-2); }
+  p { margin-top: var(--space-2); color: var(--ink-soft); font-size: var(--fs-small); }
+  .cta {
+    display: inline-block;
+    margin-top: var(--space-3);
+    font-size: var(--fs-small);
+    font-weight: 600;
+    color: var(--ink);
+    border-bottom: 2px solid var(--ampa-green);
+    padding-bottom: 2px;
+  }
+</style>
