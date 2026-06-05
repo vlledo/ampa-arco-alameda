@@ -30,3 +30,6 @@ _source-archive/
 
 # Mockups de brainstorming
 .superpowers/
+
+# Planning interno (specs y plan de implementación)
+docs/
