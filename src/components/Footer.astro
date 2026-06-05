@@ -1,0 +1,111 @@
+---
+import { Image } from 'astro:assets';
+import logoCeip from '../assets/logo-ceip-jesus-maria.jpg';
+
+const year = new Date().getFullYear();
+---
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="col">
+        <h2 class="col-title">AMPA Arco de la Alameda</h2>
+        <address>
+          Alameda de Adolfo Suárez, 1<br />
+          CP 23003 · Jaén<br />
+          <a href="mailto:ampacolegiojesusmaria@gmail.com">ampacolegiojesusmaria@gmail.com</a>
+        </address>
+      </div>
+
+      <div class="col">
+        <h2 class="col-title">Nuestro colegio</h2>
+        <div class="school">
+          <Image src={logoCeip} alt="Logo CEIP Jesús María" width={64} height={80} class="school-logo" />
+          <div>
+            <strong>CEIP Jesús María</strong><br />
+            <span class="muted">Jaén · Ecoescuela</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <h2 class="col-title">Federada a</h2>
+        <p>
+          <a href="https://fampalosolivos.org/" rel="noopener" target="_blank">
+            FAMPA Los Olivos ↗
+          </a>
+        </p>
+        <p class="muted">Federación provincial de AMPAs</p>
+      </div>
+
+      <div class="col">
+        <h2 class="col-title">Síguenos</h2>
+        <ul class="social">
+          <li>
+            <a
+              href="https://www.facebook.com/ampa.jesusmariajaen/?locale=es_LA"
+              rel="noopener"
+              target="_blank"
+              aria-label="Facebook del AMPA"
+            >Facebook ↗</a>
+          </li>
+          <li>
+            <a
+              href="https://www.instagram.com/ampa_arco_de_la_alameda/"
+              rel="noopener"
+              target="_blank"
+              aria-label="Instagram del AMPA"
+            >Instagram ↗</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="legal">
+      <div>© {year} AMPA Arco de la Alameda</div>
+      <div><a href="/aviso-legal/">Aviso legal</a></div>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background: #f3f5f7;
+    border-top: 1px solid var(--line);
+    padding: var(--space-7) 0;
+    font-size: var(--fs-small);
+    color: var(--ink-soft);
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr 1fr 1fr;
+    gap: var(--space-6);
+  }
+  .col-title {
+    font-size: var(--fs-small);
+    color: var(--ink);
+    font-weight: 700;
+    margin-bottom: var(--space-3);
+  }
+  address { font-style: normal; line-height: 1.6; }
+  .school { display: flex; align-items: center; gap: var(--space-3); }
+  .school-logo { width: 56px; height: auto; border-radius: var(--radius-sm); }
+  .muted { color: var(--ink-soft); }
+  .social { list-style: none; display: flex; flex-direction: column; gap: var(--space-2); }
+  .legal {
+    margin-top: var(--space-6);
+    padding-top: var(--space-5);
+    border-top: 1px solid var(--line);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    font-size: var(--fs-micro);
+  }
+
+  @media (max-width: 760px) {
+    .footer-grid { grid-template-columns: 1fr 1fr; gap: var(--space-5); }
+  }
+  @media (max-width: 480px) {
+    .footer-grid { grid-template-columns: 1fr; }
+  }
+</style>

@@ -1,0 +1,40 @@
+---
+---
+<div class="topbar">
+  <div class="container topbar-inner">
+    <ul class="anchors">
+      <li><span aria-hidden="true">🏫</span> CEIP Jesús María · Jaén</li>
+      <li class="lime"><span aria-hidden="true">🌿</span> Ecoescuela · Bandera Verde</li>
+      <li>Colegio centenario</li>
+    </ul>
+    <div class="fampa">Federada FAMPA Los Olivos</div>
+  </div>
+</div>
+
+<style>
+  .topbar {
+    background: var(--ampa-dark);
+    color: var(--white);
+    font-size: var(--fs-micro);
+    padding: 7px 0;
+  }
+  .topbar-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--space-4);
+  }
+  .anchors {
+    list-style: none;
+    display: flex;
+    gap: var(--space-5);
+    flex-wrap: wrap;
+  }
+  .anchors .lime { color: var(--ampa-green); font-weight: 600; }
+  .fampa { white-space: nowrap; opacity: 0.95; }
+
+  @media (max-width: 760px) {
+    .fampa { display: none; }
+    .anchors { gap: var(--space-3); font-size: 0.65rem; }
+  }
+</style>

@@ -1,7 +1,19 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import TopBar from '../components/TopBar.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
 ---
 <BaseLayout title="AMPA Arco de la Alameda" description="Web del AMPA del CEIP Jesús María, Jaén.">
-  <h1>AMPA Arco de la Alameda</h1>
-  <p>Página en construcción.</p>
+  <Fragment slot="header">
+    <TopBar />
+    <Header />
+  </Fragment>
+  <div class="container" style="padding-top: 2rem; padding-bottom: 2rem;">
+    <h1>AMPA Arco de la Alameda</h1>
+    <p>Página en construcción.</p>
+  </div>
+  <Fragment slot="footer">
+    <Footer />
+  </Fragment>
 </BaseLayout>
