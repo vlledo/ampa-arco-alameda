@@ -19,13 +19,13 @@ main {
   flex: 1;
 }
 
-a {
+:where(a) {
   color: var(--ampa-blue);
   text-decoration: underline;
   text-underline-offset: 2px;
 }
 
-a:hover {
+:where(a:hover) {
   text-decoration-thickness: 2px;
 }
 

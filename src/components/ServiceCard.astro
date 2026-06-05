@@ -38,14 +38,15 @@ const url = `/servicios/${service.id}/`;
   .service-card:hover { border-color: var(--ampa-dark); }
   .service-link { display: block; color: inherit; text-decoration: none; }
   .img {
-    aspect-ratio: 16/9;
+    aspect-ratio: 4/3;
     background: var(--green-soft);
     overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: var(--space-3);
   }
-  .img :global(img) { width: 100%; height: 100%; object-fit: cover; }
+  .img :global(img) { max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; }
   .placeholder { color: var(--ampa-dark); font-weight: 600; font-size: var(--fs-small); }
   .body { padding: var(--space-4); }
   .label {
