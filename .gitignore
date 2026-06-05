@@ -1,0 +1,16 @@
+# Node
+node_modules/
+dist/
+.astro/
+
+# Editores / SO
+.DS_Store
+.vscode/
+.idea/
+*.log
+
+# Materiales originales (no van al repo)
+_source-archive/
+
+# Mockups de brainstorming
+.superpowers/
