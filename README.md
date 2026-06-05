@@ -86,8 +86,3 @@ Edita directamente `src/pages/<archivo>.astro` con el componente `PageContent`.
 - Sin JS en cliente.
 - Sin cookies, sin analítica.
 - Verificar con Lighthouse y axe DevTools antes de publicar cambios grandes.
-
-## Documentos del proyecto
-
-- Spec: `docs/superpowers/specs/2026-06-05-ampa-website-design.md`
-- Plan: `docs/superpowers/plans/2026-06-05-ampa-website-implementation.md`
