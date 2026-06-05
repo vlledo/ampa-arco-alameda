@@ -1,43 +1,93 @@
-# Astro Starter Kit: Minimal
+# AMPA Arco de la Alameda — web
 
-```sh
-npm create astro@latest -- --template minimal
+Sitio web del AMPA Arco de la Alameda del CEIP Jesús María (Jaén).
+
+## Stack
+
+- [Astro 6](https://astro.build) (sitio estático, sin JS en cliente)
+- TypeScript estricto
+- CSS variables + scoped styles por componente
+- Despliegue: Netlify
+- Dominio: `ampaarcodelaalameda.es` (DonDominio)
+
+## Requisitos
+
+- Node.js ≥ 20
+- npm ≥ 10
+
+## Desarrollo
+
+```bash
+npm install
+npm run dev          # http://localhost:4321
+npm run build        # genera dist/
+npm run preview      # previsualiza dist/ localmente
+npx astro sync       # regenera tipos de las content collections
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Estructura
 
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+```
+src/
+├── assets/          # Logos (procesados por Astro)
+├── components/      # Componentes reutilizables (.astro)
+├── content/         # Markdown + assets de contenido
+│   ├── events/      # 1 archivo por evento
+│   ├── services/    # 1 archivo por servicio
+│   ├── pages/       # Páginas estáticas (no usadas en MVP)
+│   └── posts/       # Vacío en MVP, activado en fase 2
+├── layouts/         # BaseLayout
+├── pages/           # Rutas del sitio
+└── styles/          # Design tokens y reset
+public/              # Archivos servidos tal cual (PDFs, favicons, og-image)
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## Cómo añadir contenido
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+### Un nuevo evento
 
-Any static assets, like images, can be placed in the `public/` directory.
+1. Crea `src/content/events/<slug>/index.md` con su frontmatter.
+2. Pon el cartel como `src/content/events/<slug>/cartel.jpeg`.
+3. `npm run dev` y verifica que aparece en `/eventos/`.
+4. Si `featured: true` y `date` es futura, aparece en portada.
 
-## 🧞 Commands
+Esquema del frontmatter de un evento:
 
-All commands are run from the root of the project, from a terminal:
+```yaml
+---
+title: ...
+date: 2026-MM-DDTHH:MM:SS+02:00
+location: ...
+poster: ./cartel.jpeg
+posterAlt: Texto descriptivo del cartel.
+featured: true   # opcional, default false
+shortDescription: ...
+---
+```
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+### Un nuevo servicio
 
-## 👀 Want to learn more?
+1. Crea `src/content/services/<slug>/index.md`.
+2. Si tienes formulario online, usa `formUrl`. Si es PDF descargable, usa `formPdf` apuntando a una ruta en `public/`.
+3. Los PDFs y archivos descargables van en `public/servicios/<slug>/` (no en `src/content/`).
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+### Una página estática (Hazte socio, Contacto, etc.)
+
+Edita directamente `src/pages/<archivo>.astro` con el componente `PageContent`.
+
+## Despliegue
+
+- `main` → producción en Netlify automática (cada `git push`).
+- Pull requests → preview en URL única.
+
+## Accesibilidad
+
+- WCAG 2.1 AA como objetivo.
+- Sin JS en cliente.
+- Sin cookies, sin analítica.
+- Verificar con Lighthouse y axe DevTools antes de publicar cambios grandes.
+
+## Documentos del proyecto
+
+- Spec: `docs/superpowers/specs/2026-06-05-ampa-website-design.md`
+- Plan: `docs/superpowers/plans/2026-06-05-ampa-website-implementation.md`
