@@ -1,0 +1,38 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import TopBar from '../../components/TopBar.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import ServiceCard from '../../components/ServiceCard.astro';
+
+const services = (await getCollection('services')).sort((a, b) => a.data.order - b.data.order);
+---
+<BaseLayout
+  title="Servicios · AMPA Arco de la Alameda"
+  description="Escuela de verano, extraescolares y ludoteca del AMPA Arco de la Alameda."
+>
+  <Fragment slot="header">
+    <TopBar />
+    <Header />
+  </Fragment>
+
+  <div class="container page">
+    <h1>Servicios del AMPA</h1>
+    <p class="lead">Estos son los servicios que ofrece el AMPA durante el curso y los meses de verano. Cada uno tiene su propia página con detalles, documentos e instrucciones para apuntarse.</p>
+    <div class="grid">
+      {services.map(service => <ServiceCard service={service} />)}
+    </div>
+  </div>
+
+  <Fragment slot="footer">
+    <Footer />
+  </Fragment>
+</BaseLayout>
+
+<style>
+  .page { padding: var(--space-7) var(--container-pad); }
+  .lead { color: var(--ink-soft); max-width: 60ch; margin-top: var(--space-3); margin-bottom: var(--space-6); }
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-5); }
+  @media (max-width: 760px) { .grid { grid-template-columns: 1fr; } }
+</style>
