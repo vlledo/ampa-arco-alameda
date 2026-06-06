@@ -42,7 +42,12 @@ const { title, season, shortDescription, heroImage, heroImageAlt, formUrl, formP
         <div class="main">
           {heroImage && heroImageAlt && (
             <div class="hero-image">
-              <Image src={heroImage} alt={heroImageAlt} width={900} height={506} />
+              <Image
+                src={heroImage}
+                alt={heroImageAlt}
+                width={900}
+                height={Math.round(900 * heroImage.height / heroImage.width)}
+              />
             </div>
           )}
           <div class="content">
