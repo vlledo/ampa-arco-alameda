@@ -2,7 +2,7 @@
 import PageContent from '../components/PageContent.astro';
 import Button from '../components/Button.astro';
 
-const inscripcionPdf = '/hazte-socio/inscripcion-ampa.pdf';
+const inscripcionFormulario = 'https://docs.google.com/forms/d/e/1FAIpQLScgN-UV4aoYQUFInfWbwMw8co4KNKbkkQHPb0NfJICpNL1RNw/viewform?usp=header';
 ---
 <PageContent
   title="Hazte socio · AMPA Arco de la Alameda"
@@ -22,17 +22,16 @@ const inscripcionPdf = '/hazte-socio/inscripcion-ampa.pdf';
   </ul>
 
   <h2>Cuota</h2>
-  <p>La cuota anual es de <strong>15 € por familia</strong>.</p>
+  <p>La cuota anual es de <strong>18 € por familia</strong>.</p>
 
   <h2>Cómo asociarse</h2>
   <ol>
-    <li>Descarga el formulario de inscripción.</li>
-    <li>Cumpliméntalo con los datos solicitados.</li>
-    <li>Envíalo por email a <a href="mailto:ampacolegiojesusmaria@gmail.com">ampacolegiojesusmaria@gmail.com</a>.</li>
+    <li>Rellena el formulario de inscripción online.</li>
+    <li>Envíanoslo y nos pondremos en contacto contigo.</li>
   </ol>
 
   <p>
-    <Button href={inscripcionPdf} download>Descargar formulario de inscripción</Button>
+    <Button href={inscripcionFormulario} external>Rellenar formulario de inscripción</Button>
   </p>
 
   <h2>Más información</h2>
