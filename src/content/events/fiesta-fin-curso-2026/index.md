@@ -25,6 +25,12 @@ Cerramos el curso 25-26 con la fiesta más esperada del año.
 - **Dónde:** CEIP Jesús María, Alameda de Adolfo Suárez, 1 — Jaén.
 - **Para quién:** todas las familias del cole, socios y no socios.
 
+## Aforo y acceso
+
+Por cuestiones de aforo, **cada familia podrá invitar a un máximo de 2 familiares cercanos**. Habrá **control de acceso**, así que los familiares invitados deberán **entrar junto con la familia que los invita** — no se permitirá el acceso por separado.
+
+**El acceso está prohibido para personas ajenas al centro.**
+
 Si quieres echar una mano antes, durante o después de la fiesta, escríbenos a [ampacolegiojesusmaria@gmail.com](mailto:ampacolegiojesusmaria@gmail.com) o díselo a cualquier miembro de la junta del AMPA.
 
 ¡Nos vemos en la fiesta!

@@ -6,6 +6,7 @@ heroImage: ./cartel.jpeg
 heroImageAlt: Cartel de la escuela de verano del AMPA.
 formUrl: https://docs.google.com/forms/d/e/1FAIpQLSfaWQKAph_xTyekAb88nunqdNCSI5Ib9ilC1oW15JF3a1WfkQ/viewform
 documents:
+  - { label: "Programa de actividades", file: "/servicios/escuela-de-verano/programa-actividades.pdf" }
   - { label: "Ficha de inscripción", file: "/servicios/escuela-de-verano/ficha.pdf" }
   - { label: "Instrucciones de pago", file: "/servicios/escuela-de-verano/instrucciones-pago.jpeg" }
 order: 1
@@ -20,6 +21,14 @@ El plazo para apuntarse termina el **10 de junio**. Después de esa fecha no gar
 ## Qué se hace
 
 Actividades temáticas, juegos, talleres, salidas y mucha agua. El equipo de monitores se encarga de organizar el día a día para que los peques disfruten y aprendan.
+
+## Programa de actividades
+
+Hemos preparado un programa completo para todas las semanas. Puedes consultarlo en el PDF: [Programa de actividades — Escuela de verano 2026](/servicios/escuela-de-verano/programa-actividades.pdf).
+
+## Horario y entrada
+
+De **lunes a viernes, de 8:00 a 15:00**. La entrada es por la **puerta marrón** que da acceso al **patio de la palmera**.
 
 ## Cómo apuntarse
 

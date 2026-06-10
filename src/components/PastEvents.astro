@@ -1,0 +1,35 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import EventCard from './EventCard.astro';
+
+interface Props {
+  events: CollectionEntry<'events'>[];
+}
+
+const { events } = Astro.props;
+---
+{events.length > 0 && (
+  <section class="past" aria-labelledby="past-title">
+    <div class="container">
+      <div class="section-header">
+        <h2 id="past-title">Últimos eventos</h2>
+        <a href="/eventos/">Ver todos →</a>
+      </div>
+      <div class="grid">
+        {events.map(event => <EventCard event={event} />)}
+      </div>
+    </div>
+  </section>
+)}
+
+<style>
+  .past { padding: var(--space-section) 0; background: var(--white); border-top: 1px solid var(--line); }
+  .section-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: var(--space-5); }
+  .section-header a { color: var(--ampa-blue); font-size: var(--fs-small); font-weight: 600; text-decoration: none; }
+  .section-header a:hover { text-decoration: underline; }
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-5); margin-top: var(--space-4); }
+  @media (max-width: 760px) {
+    .past { padding: var(--space-section-mobile) 0; }
+    .grid { grid-template-columns: 1fr; }
+  }
+</style>

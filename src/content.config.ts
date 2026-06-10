@@ -59,14 +59,19 @@ const pages = defineCollection({
 const posts = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/posts' }),
   schema: ({ image }) =>
-    z.object({
-      title: z.string(),
-      date: z.coerce.date(),
-      cover: image().optional(),
-      coverAlt: z.string().optional(),
-      excerpt: z.string(),
-      tags: z.array(z.string()).default([]),
-    }),
+    z
+      .object({
+        title: z.string(),
+        pubDate: z.coerce.date(),
+        description: z.string(),
+        cover: image().optional(),
+        coverAlt: z.string().optional(),
+        tags: z.array(z.string()).default([]),
+      })
+      .refine(
+        (data) => !data.cover || data.coverAlt,
+        { message: 'coverAlt es obligatorio cuando hay cover' }
+      ),
 });
 
 export const collections = { events, services, pages, posts };

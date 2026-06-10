@@ -6,6 +6,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import HeroEvent from '../components/HeroEvent.astro';
 import UpcomingEvents from '../components/UpcomingEvents.astro';
+import PastEvents from '../components/PastEvents.astro';
 import ServiceGrid from '../components/ServiceGrid.astro';
 import SociosCTA from '../components/SociosCTA.astro';
 import NewsTeaser from '../components/NewsTeaser.astro';
@@ -19,6 +20,10 @@ const allUpcomingFeatured = (await getCollection('events', ({ data }) => data.fe
 const heroCandidates = allUpcomingFeatured.filter(e => e.data.isHero);
 const heroEvent = heroCandidates[0] ?? allUpcomingFeatured[0];
 const upcomingOthers = allUpcomingFeatured.filter(e => e.id !== heroEvent?.id);
+
+const pastEvents = (await getCollection('events', ({ data }) => data.date < now))
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+  .slice(0, 3);
 
 const allServices = await getCollection('services');
 const services = allServices.sort((a, b) => a.data.order - b.data.order);
@@ -41,6 +46,8 @@ const services = allServices.sort((a, b) => a.data.order - b.data.order);
   )}
 
   <UpcomingEvents events={upcomingOthers} />
+
+  <PastEvents events={pastEvents} />
 
   <ServiceGrid services={services} />
 

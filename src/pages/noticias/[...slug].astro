@@ -1,0 +1,72 @@
+---
+import { getCollection, render, type CollectionEntry } from 'astro:content';
+import { Image } from 'astro:assets';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import TopBar from '../../components/TopBar.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('posts');
+  return posts.map(post => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+interface Props { post: CollectionEntry<'posts'>; }
+const { post } = Astro.props;
+const { Content } = await render(post);
+const { title, pubDate, description, cover, coverAlt } = post.data;
+const fullDate = new Intl.DateTimeFormat('es-ES', {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+}).format(pubDate);
+---
+<BaseLayout
+  title={`${title} · AMPA Arco de la Alameda`}
+  description={description}
+  ogImage={cover?.src}
+>
+  <Fragment slot="header">
+    <TopBar />
+    <Header />
+  </Fragment>
+
+  <article class="post">
+    <div class="container">
+      <a href="/noticias/" class="back">← Todas las noticias</a>
+      <h1>{title}</h1>
+      <p class="meta"><time datetime={pubDate.toISOString()}>{fullDate}</time></p>
+      {cover && coverAlt && (
+        <div class="cover">
+          <Image src={cover} alt={coverAlt} width={900} height={Math.round(900 * cover.height / cover.width)} />
+        </div>
+      )}
+      <div class="content">
+        <Content />
+      </div>
+    </div>
+  </article>
+
+  <Fragment slot="footer">
+    <Footer />
+  </Fragment>
+</BaseLayout>
+
+<style>
+  .post { padding: var(--space-7) 0; background: var(--white); }
+  .back { color: var(--ampa-blue); font-size: var(--fs-small); }
+  h1 { margin-top: var(--space-4); }
+  .meta { color: var(--ink-soft); font-size: var(--fs-small); margin-top: var(--space-2); }
+  .cover { margin-top: var(--space-5); border-radius: var(--radius-md); overflow: hidden; border: 1px solid var(--line); }
+  .cover :global(img) { width: 100%; height: auto; display: block; }
+  .content { max-width: 65ch; margin-top: var(--space-5); }
+  .content :global(p) { margin-bottom: var(--space-4); line-height: var(--lh-normal); }
+  .content :global(h2) { margin-top: var(--space-6); margin-bottom: var(--space-3); }
+  .content :global(h3) { margin-top: var(--space-5); margin-bottom: var(--space-2); }
+  .content :global(ul), .content :global(ol) { padding-left: var(--space-5); margin-bottom: var(--space-4); }
+  .content :global(li) { margin-bottom: var(--space-2); }
+  .content :global(a:not(.btn)) { color: var(--ampa-blue); }
+</style>
