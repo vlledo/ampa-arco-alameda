@@ -27,7 +27,7 @@ Cerramos el curso 25-26 con la fiesta más esperada del año.
 
 ## Aforo y acceso
 
-Por cuestiones de aforo, **cada familia podrá invitar a un máximo de 2 familiares cercanos**. Habrá **control de acceso**, así que los familiares invitados deberán **entrar junto con la familia que los invita** — no se permitirá el acceso por separado.
+**Cada familia podrá invitar a un máximo de 4 familiares cercanos, hasta completar aforo.** Habrá **control de acceso**, así que los familiares invitados deberán **entrar junto con la familia que los invita** — no se permitirá el acceso por separado.
 
 **El acceso está prohibido para personas ajenas al centro.**
 
