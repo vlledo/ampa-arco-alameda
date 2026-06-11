@@ -1,7 +1,7 @@
 ---
 title: Escuela de verano
 season: Verano 2026
-shortDescription: Apunta a los peques durante los meses de verano. Inscripción abierta hasta el 10 de junio.
+shortDescription: "Apunta a los peques durante los meses de verano. Plazo ampliado: matrícula abierta hasta el 22 de junio."
 heroImage: ./cartel.jpeg
 heroImageAlt: Cartel de la escuela de verano del AMPA.
 formUrl: https://docs.google.com/forms/d/e/1FAIpQLSfaWQKAph_xTyekAb88nunqdNCSI5Ib9ilC1oW15JF3a1WfkQ/viewform
@@ -14,9 +14,9 @@ order: 1
 
 La escuela de verano es un servicio del AMPA para que las familias podamos conciliar durante las semanas de junio y julio en las que el cole cierra.
 
-## ⚠️ Plazo de inscripción
+## ⚠️ Plazo ampliado hasta el 22 de junio
 
-El plazo para apuntarse termina el **10 de junio**. Después de esa fecha no garantizamos plaza.
+Hemos **ampliado el plazo de matrícula hasta el lunes 22 de junio** para acoger a las familias que estaban dudando o no llegaron a tiempo en el primer plazo. La escuela arranca al día siguiente, así que cuanto antes entregues la ficha, mejor para organizar el grupo y garantizar plaza.
 
 ## Qué se hace
 

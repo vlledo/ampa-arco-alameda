@@ -1,11 +1,17 @@
 ---
 title: La escuela de verano arranca el 23 de junio
 pubDate: 2026-06-10T09:00:00+02:00
-description: La escuela de verano del AMPA comienza el martes 23 de junio a las 8:00. Recordamos horario y programa de actividades.
+description: La escuela de verano del AMPA comienza el martes 23 de junio a las 8:00. Plazo de matrícula ampliado hasta el lunes 22 de junio.
 tags: [escuela-de-verano, verano-2026]
 ---
 
 La **escuela de verano** del AMPA arranca el **martes 23 de junio a las 8:00**. ¡Estamos deseando recibir a todas las niñas y niños apuntados!
+
+## Plazo de matrícula ampliado hasta el 22 de junio
+
+Hemos decidido **ampliar el plazo de matrícula hasta el lunes 22 de junio** para acoger a las familias que aún estaban dudando o no tuvieron tiempo de entregar la ficha en el primer plazo. La escuela arranca al día siguiente, así que si te lo estás pensando, este es el momento de apuntar a los peques.
+
+Los documentos de inscripción y las instrucciones de pago siguen disponibles en la página de la [Escuela de verano](/servicios/escuela-de-verano/).
 
 ## Horario y entrada
 
