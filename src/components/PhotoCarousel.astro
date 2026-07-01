@@ -90,6 +90,11 @@ const n = slides.length;
     flex: 0 0 100%;
     scroll-snap-align: center;
     margin: 0;
+    /* Las flechas/puntos son enlaces ancla (#slide-N). Sin esto, el navegador
+       alinea la diapositiva al borde superior de la ventana y desplaza la página
+       hacia arriba ocultando la cabecera. Un scroll-margin-block-start enorme
+       fija el objetivo vertical en 0: solo se desplaza el carrusel en horizontal. */
+    scroll-margin-top: 100vh;
     aspect-ratio: 16 / 9;
     max-height: 460px;
   }
