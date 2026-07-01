@@ -4,7 +4,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import TopBar from '../components/TopBar.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import HeroEvent from '../components/HeroEvent.astro';
+import PhotoCarousel from '../components/PhotoCarousel.astro';
 import UpcomingEvents from '../components/UpcomingEvents.astro';
 import PastEvents from '../components/PastEvents.astro';
 import ServiceGrid from '../components/ServiceGrid.astro';
@@ -13,13 +13,8 @@ import NewsTeaser from '../components/NewsTeaser.astro';
 
 const now = new Date();
 
-const allUpcomingFeatured = (await getCollection('events', ({ data }) => data.featured && data.date >= now))
+const upcomingEvents = (await getCollection('events', ({ data }) => data.featured && data.date >= now))
   .sort((a, b) => a.data.date.getTime() - b.data.date.getTime());
-
-// Hero: first event with isHero=true (if any), else first by date
-const heroCandidates = allUpcomingFeatured.filter(e => e.data.isHero);
-const heroEvent = heroCandidates[0] ?? allUpcomingFeatured[0];
-const upcomingOthers = allUpcomingFeatured.filter(e => e.id !== heroEvent?.id);
 
 const pastEvents = (await getCollection('events', ({ data }) => data.date < now))
   .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
@@ -37,15 +32,9 @@ const services = allServices.sort((a, b) => a.data.order - b.data.order);
     <Header />
   </Fragment>
 
-  {heroEvent && <HeroEvent event={heroEvent} />}
-  {!heroEvent && (
-    <section class="container" style="padding: 3rem 28px;">
-      <h1>AMPA Arco de la Alameda</h1>
-      <p>No hay eventos destacados próximos en este momento.</p>
-    </section>
-  )}
+  <PhotoCarousel />
 
-  <UpcomingEvents events={upcomingOthers} />
+  <UpcomingEvents events={upcomingEvents} />
 
   <PastEvents events={pastEvents} />
 
