@@ -1,0 +1,166 @@
+---
+import { Image } from 'astro:assets';
+import colegio1 from '../assets/colegio/colegio-1.jpg';
+import colegio2 from '../assets/colegio/colegio-2.jpg';
+import colegio3 from '../assets/colegio/colegio-3.jpg';
+import colegio4 from '../assets/colegio/colegio-4.jpg';
+
+const slides = [
+  {
+    image: colegio1,
+    caption: 'Pasillos que son un museo',
+    alt: 'Pasillo del colegio decorado por el alumnado con motivos de carnaval',
+  },
+  {
+    image: colegio2,
+    caption: 'Nuestro cole',
+    alt: 'Fachada del CEIP Jesús María de Jaén',
+  },
+  {
+    image: colegio3,
+    caption: 'El huerto escolar',
+    alt: 'El huerto escolar con bancales y las montañas al fondo',
+  },
+  {
+    image: colegio4,
+    caption: 'Rincón verde',
+    alt: 'Rincón ajardinado del colegio con bancos',
+  },
+];
+
+const n = slides.length;
+---
+<section class="carousel-hero">
+  <div class="container">
+    <div class="carousel">
+      <div class="track">
+        {slides.map((s, i) => {
+          const prev = ((i - 1 + n) % n) + 1;
+          const next = ((i + 1) % n) + 1;
+          return (
+            <figure class="slide" id={`slide-${i + 1}`}>
+              <Image
+                src={s.image}
+                alt={s.alt}
+                widths={[600, 900, 1200]}
+                sizes="(max-width: 760px) 100vw, 1120px"
+                format="webp"
+              />
+              <figcaption>{s.caption}</figcaption>
+              <a class="arrow prev" href={`#slide-${prev}`} aria-label="Foto anterior">‹</a>
+              <a class="arrow next" href={`#slide-${next}`} aria-label="Foto siguiente">›</a>
+            </figure>
+          );
+        })}
+      </div>
+      <div class="dots">
+        {slides.map((_, i) => (
+          <a href={`#slide-${i + 1}`} aria-label={`Ir a la foto ${i + 1}`}></a>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .carousel-hero {
+    background: var(--white);
+    padding: var(--space-6) 0 var(--space-7);
+    border-bottom: 1px solid var(--line);
+  }
+  .carousel {
+    position: relative;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    background: var(--green-soft);
+    box-shadow: var(--shadow-md);
+  }
+  .track {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+  .track::-webkit-scrollbar { display: none; }
+  @media (prefers-reduced-motion: no-preference) {
+    .track { scroll-behavior: smooth; }
+  }
+  .slide {
+    position: relative;
+    flex: 0 0 100%;
+    scroll-snap-align: center;
+    margin: 0;
+    aspect-ratio: 16 / 9;
+    max-height: 460px;
+  }
+  .slide :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .slide figcaption {
+    position: absolute;
+    left: var(--space-5);
+    bottom: var(--space-5);
+    padding: var(--space-2) var(--space-4);
+    background: rgba(26, 64, 48, 0.72);
+    backdrop-filter: blur(2px);
+    color: var(--white);
+    font-weight: 700;
+    font-size: 1.5rem;
+    border-radius: var(--radius-md);
+  }
+  .arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.9);
+    color: var(--ampa-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.6rem;
+    line-height: 1;
+    text-decoration: none;
+    font-weight: 700;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+    transition: background 0.15s ease;
+  }
+  .arrow:hover { background: var(--white); }
+  .arrow.prev { left: var(--space-3); }
+  .arrow.next { right: var(--space-3); }
+  .dots {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: var(--space-3);
+    display: flex;
+    justify-content: center;
+    gap: 9px;
+    z-index: 2;
+  }
+  .dots a {
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.55);
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    text-decoration: none;
+  }
+  .dots a:hover { background: var(--white); }
+
+  @media (max-width: 760px) {
+    .slide {
+      aspect-ratio: 4 / 3;
+      max-height: none;
+    }
+    .slide figcaption {
+      font-size: 1.2rem;
+      left: var(--space-3);
+      bottom: var(--space-3);
+    }
+  }
+</style>
