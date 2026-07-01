@@ -4,8 +4,7 @@ date: 2026-06-22T19:00:00+02:00
 location: CEIP Jesús María, Jaén
 poster: ./cartel.jpeg
 posterAlt: Cartel de la fiesta fin de curso del 22 de junio de 2026 a partir de las 19:00 en el CEIP Jesús María.
-featured: true
-isHero: true
+featured: false
 shortDescription: Cerramos el curso con barra, música, juegos y actuaciones del alumnado. Os esperamos a todas las familias.
 ---
 
