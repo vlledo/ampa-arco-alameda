@@ -26,12 +26,13 @@ const inscripcionFormulario = 'https://docs.google.com/forms/d/e/1FAIpQLScgN-UV4
 
   <h2>Cómo asociarse</h2>
   <ol>
-    <li>Rellena el formulario de inscripción online.</li>
+    <li>Rellena el formulario de inscripción, online o descargando el PDF.</li>
     <li>Envíanoslo y nos pondremos en contacto contigo.</li>
   </ol>
 
-  <p>
-    <Button href={inscripcionFormulario} external>Rellenar formulario de inscripción</Button>
+  <p class="acciones">
+    <Button href={inscripcionFormulario} external>Rellenar formulario online</Button>
+    <Button href="/hazte-socio/inscripcion-ampa.pdf" variant="ghost" download>Descargar formulario (PDF)</Button>
   </p>
 
   <h2>Más información</h2>
@@ -44,6 +45,7 @@ const inscripcionFormulario = 'https://docs.google.com/forms/d/e/1FAIpQLScgN-UV4
 
 <style>
   .intro { font-size: 1.1rem; color: var(--ink); }
+  .acciones { display: flex; flex-wrap: wrap; gap: var(--space-3); }
   .poster { margin-top: var(--space-7); border: 1px solid var(--line); border-radius: var(--radius-md); overflow: hidden; max-width: 480px; }
   .poster img { width: 100%; height: auto; display: block; }
 </style>
